@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">FinalProject</string>
+
+    <!--Main Activity Strings-->
+    <string name="loginUsernameWarning">Username:</string>
+    <string name="loginPasswordWarning">Password:</string>
+    <string name="loginUsernameHint">Email</string>
+    <string name="loginPasswordHint">Password</string>
+    <string name="loginButton">Login</string>
+    <string name="loginRegisterButton">Register</string>
+    <string name="forgotPassword">Forgot your password?</string>
+
+    <!--Register Activity Strings-->
+    <string name="Register">Register a new account</string>
+    <string name="firstNameWarning">First Name:</string>
+    <string name="firstNameHint">John</string>
+    <string name="lastNameWarning">Last Name:</string>
+    <string name="lastNameHint">Doe</string>
+    <string name="dobWarning">Date of Birth:</string>
+    <string name="dobHint">19/09/1990</string>
+    <string name="addressWarning">Address:</string>
+    <string name="addressHint">12 Crescent Road</string>
+    <string name="postcodeWarning">Postcode:</string>
+    <string name="postcodeHint">LD0 B98</string>
+    <string name="telephoneWarning">Tel Num:</string>
+    <string name="telephoneHint">08324 32421</string>
+    <string name="emailWarning">Email:</string>
+    <string name="emailHint">johndoe@hotmail.com</string>
+    <string name="confirmPassword">Confirm password:</string>
+    <string name="Complete">Complete</string>
+    <string name="Back">Back</string>
+
+    <!--Landing Activity Strings-->
+    <string name="logOut">Sign out</string>
+    <string name="profile">Profile</string>
+
+    <!--Profile Activity Strings-->
+    <string name="yourName">Full name</string>
+    <string name="yourEmail">Email</string>
+    <string name="yourAddress">Address</string>
+    <string name="yourPhone">Phone number</string>
+    <string name="profileReturn">Return</string>
+    <string name="emailNotVerified">Your email is not verified!</string>
+    <string name="verifyEmail">Verify now</string>
+    <string name="resetPW">Reset password</string>
+    <string name="editProfileImg">Edit Profile</string>
+
+
+</resources>

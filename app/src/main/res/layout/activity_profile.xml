@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="157dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="450dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.557"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/returnBtn"
+        android:layout_width="403dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="440dp"
+        android:text="@string/profileReturn"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+    <TextView
+        android:id="@+id/emailNotVerifeid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/emailNotVerified"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/verifyEmailBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/verifyEmailBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/verifyEmail"
+        app:layout_constraintBottom_toTopOf="@+id/profileImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/profileResetPW"
+        android:layout_width="402dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="620dp"
+        android:text="@string/resetPW"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/returnBtn"
+        app:layout_constraintEnd_toEndOf="@+id/returnBtn"
+        app:layout_constraintStart_toStartOf="@+id/returnBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/editProfile"
+        android:layout_width="402dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="560dp"
+        android:text="@string/editProfileImg"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/returnBtn"
+        app:layout_constraintEnd_toEndOf="@+id/returnBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/returnBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/profileFullNameLbl"
+        android:layout_width="358dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="340dp"
+        android:text="@string/yourName"
+        app:layout_constraintBottom_toTopOf="@+id/profileResetPW"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+
+    <TextView
+        android:id="@+id/profileEmailLbl"
+        android:layout_width="358dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/yourEmail"
+        app:layout_constraintEnd_toEndOf="@+id/profileFullNameLbl"
+        app:layout_constraintStart_toStartOf="@+id/profileFullNameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/profileFullNameLbl" />
+
+    <TextView
+        android:id="@+id/profileAddressLbl"
+        android:layout_width="358dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/yourAddress"
+        app:layout_constraintEnd_toEndOf="@+id/profileFullNameLbl"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/profileFullNameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/profileEmailLbl" />
+
+    <TextView
+        android:id="@+id/profileAddressLbl2"
+        android:layout_width="358dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/yourPhone"
+        app:layout_constraintEnd_toEndOf="@+id/profileFullNameLbl"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/profileFullNameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/profileAddressLbl" />
+
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="154dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="315dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/profileResetPW"
+        app:layout_constraintEnd_toEndOf="@+id/profileFullNameLbl"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profileFullNameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/profileFullNameLbl"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/profileAddress"
+        android:layout_width="154dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="200dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/profileResetPW"
+        app:layout_constraintEnd_toEndOf="@+id/profileFullNameLbl"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profileFullNameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/profileAddressLbl" />
+
+    <TextView
+        android:id="@+id/profilePostcode"
+        android:layout_width="154dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginLeft="155dp"
+        android:layout_marginBottom="200dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/profileResetPW"
+        app:layout_constraintEnd_toEndOf="@+id/profileFullNameLbl"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profileFullNameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/profileAddressLbl" />
+
+    <TextView
+        android:id="@+id/profileLastName"
+        android:layout_width="154dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginLeft="155dp"
+        android:layout_marginBottom="315dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/profileResetPW"
+        app:layout_constraintEnd_toEndOf="@+id/profileFullNameLbl"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profileFullNameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/profileFullNameLbl"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/profileEmail"
+        android:layout_width="359dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="256dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/profileResetPW"
+        app:layout_constraintEnd_toEndOf="@+id/profileEmailLbl"
+        app:layout_constraintStart_toStartOf="@+id/profileEmailLbl"
+        app:layout_constraintTop_toBottomOf="@+id/profileEmailLbl" />
+
+    <TextView
+        android:id="@+id/profilePhone"
+        android:layout_width="359dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="142dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/profileResetPW"
+        app:layout_constraintEnd_toEndOf="@+id/profileEmailLbl"
+        app:layout_constraintStart_toStartOf="@+id/profileEmailLbl"
+        app:layout_constraintTop_toBottomOf="@+id/profileAddressLbl2" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="33dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileName"
+        app:layout_constraintEnd_toStartOf="@+id/profileFullNameLbl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profileFullNameLbl"
+        app:srcCompat="@drawable/user" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="33dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileEmailLbl"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:srcCompat="@drawable/envelope" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="33dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:srcCompat="@drawable/location" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="33dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toStartOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:srcCompat="@drawable/ohone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
