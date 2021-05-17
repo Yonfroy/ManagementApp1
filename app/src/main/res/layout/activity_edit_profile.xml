@@ -7,69 +7,119 @@
     tools:context=".EditProfileActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="500dp"
+        android:id="@+id/editProfileImg"
+        android:layout_width="157dp"
+        android:layout_height="154dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="550dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.557"
         tools:srcCompat="@tools:sample/avatars" />
 
     <EditText
         android:id="@+id/editFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginBottom="300dp"
         android:ems="10"
+        android:hint="@string/editFName"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="425dp"
+        android:layout_marginBottom="420dp"
         android:ems="10"
+        android:hint="@string/editLName"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editFirstName"
         app:layout_constraintStart_toStartOf="@+id/editFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/editFirstName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="370dp"
+        android:layout_marginBottom="380dp"
         android:ems="10"
+        android:hint="@string/editAddress"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintEnd_toEndOf="@+id/editLastName"
+        app:layout_constraintStart_toStartOf="@+id/editLastName"
+        app:layout_constraintTop_toBottomOf="@+id/editLastName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/editPostcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="310dp"
         android:ems="10"
+        android:hint="@string/editPostcode"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintEnd_toEndOf="@+id/editAddress"
+        app:layout_constraintStart_toStartOf="@+id/editAddress"
+        app:layout_constraintTop_toBottomOf="@+id/editAddress" />
+
+    <EditText
+        android:id="@+id/editPhoneNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="250dp"
+        android:ems="10"
+        android:hint="@string/editPhoneNum"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editPostcode"
+        app:layout_constraintStart_toStartOf="@+id/editPostcode"
+        app:layout_constraintTop_toBottomOf="@+id/editPostcode" />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
+        android:ems="10"
+        android:hint="@string/editEmail"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editPhoneNum"
+        app:layout_constraintStart_toStartOf="@+id/editPhoneNum"
+        app:layout_constraintTop_toBottomOf="@+id/editPhoneNum" />
+
+    <Button
+        android:id="@+id/editConfirmBtn"
+        android:layout_width="115dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="250dp"
+        android:text="@string/editConfirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+
+    <Button
+        android:id="@+id/editReturnBtn"
+        android:layout_width="115dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginRight="250dp"
+        android:text="@string/editReturn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

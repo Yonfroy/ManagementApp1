@@ -68,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
 
-        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profileImage.jpg");
+        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -159,40 +159,14 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Open gallery
-                Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGallery, 1000);
-            }
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @androidx.annotation.Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1000){
-            if(resultCode == Activity.RESULT_OK){
-                Uri imageUri = data.getData();
-                uploadImageToFirebase(imageUri);
-            }
-        }
-    }
-
-    private void uploadImageToFirebase(Uri imageUri){
-        //Upload image to storage
-        StorageReference fileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
-        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profileImage);
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ProfileActivity.this, "Image upload failed.", Toast.LENGTH_SHORT);
+                Intent i = new Intent(view.getContext(), EditProfileActivity.class);
+                i.putExtra("firstName", fName.getText().toString());
+                i.putExtra("lastName", lName.getText().toString());
+                i.putExtra("address", address.getText().toString());
+                i.putExtra("postcode", postcode.getText().toString());
+                i.putExtra("phoneNumber", phoneNumber.getText().toString());
+                i.putExtra("email", email.getText().toString());
+                startActivity(i);
             }
         });
     }

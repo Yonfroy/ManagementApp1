@@ -51,10 +51,9 @@
     <string name="editAddress">Address</string>
     <string name="editPostcode">Postcode</string>
     <string name="editPhoneNum">Phone number</string>
-    <string name="editEmail">Edit email</string>
+    <string name="editEmail">Email</string>
     <string name="editConfirm">Confirm</string>
     <string name="editReturn">Return</string>
-    <string name="suckMyAss">yeet</string>
 
 
 </resources>
