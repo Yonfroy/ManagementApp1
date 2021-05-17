@@ -45,5 +45,15 @@
     <string name="resetPW">Reset password</string>
     <string name="editProfileImg">Edit Profile</string>
 
+    <!--Edit Profile Activity Strings-->
+    <string name="editFName">First Name</string>
+    <string name="editLName">Last name</string>
+    <string name="editAddress">Address</string>
+    <string name="editPostcode">Postcode</string>
+    <string name="editPhoneNum">Phone number</string>
+    <string name="editEmail">Edit email</string>
+    <string name="editConfirm">Confirm</string>
+    <string name="editReturn">Return</string>
+
 
 </resources>

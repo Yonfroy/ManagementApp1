@@ -39,7 +39,6 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userId;
     Button returnBtn, resendCode, resetPasswordProfile, editProfileImg;
-    FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
 
@@ -69,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
 
-        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profileImage.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -172,8 +171,6 @@ public class ProfileActivity extends AppCompatActivity {
         if(requestCode == 1000){
             if(resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
-                //profileImage.setImageURI(imageUri);
-
                 uploadImageToFirebase(imageUri);
             }
         }
