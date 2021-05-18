@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,13 +38,40 @@ public class LandingActivity extends AppCompatActivity {
     StorageReference storageReference;
     FirebaseFirestore fStore;
     Button testBtn;
+    ListView appList;
+
+    String[] addresses = {
+      "63 Northcote Road", "19 Wessex Gate", "Trump tower 102",
+    };
+
+    String[] dates = {
+            "05/04/1999 12:00:00", "17/02/2021 16:30:00", "01/11/2021 06:00:00",
+    };
+
+    String[] durations = {
+            "2H", "6H", "1H",
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
-        testBtn = findViewById(R.id.testBtn);
+        //testBtn = findViewById(R.id.testBtn);
+
+        //LIST TEST BELOW
+        AppointmentListAdapter adapter = new AppointmentListAdapter(this, addresses, dates, durations);
+        appList=(ListView)findViewById(R.id.appointmentList);
+        appList.setAdapter(adapter);
+
+        appList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "Item " + position + " clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
         int time = (int) (System.currentTimeMillis());
 
@@ -78,23 +107,23 @@ public class LandingActivity extends AppCompatActivity {
 //            }
 //        });
 
-        testBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               fStore.collection("appointments").whereEqualTo("customer", userID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                   @Override
-                   public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                       if(task.isSuccessful()){
-                           for(QueryDocumentSnapshot document : task.getResult()){
-                               System.out.println(document.getId() + " => " + document.getData());
-                           }
-                       } else {
-                           Log.d(TAG, "Error retrieving documents: ", task.getException());
-                       }
-                   }
-               });
-            }
-        });
+//        testBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               fStore.collection("appointments").whereEqualTo("customer", userID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                   @Override
+//                   public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                       if(task.isSuccessful()){
+//                           for(QueryDocumentSnapshot document : task.getResult()){
+//                               System.out.println(document.getId() + " => " + document.getData());
+//                           }
+//                       } else {
+//                           Log.d(TAG, "Error retrieving documents: ", task.getException());
+//                       }
+//                   }
+//               });
+//            }
+//        });
     }
 
     public void logout(View view){
