@@ -43,6 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
     StorageReference storageReference;
 
     //TODO: Handle DB on the spot
+    //Hello
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
