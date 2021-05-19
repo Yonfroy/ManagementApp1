@@ -35,12 +35,12 @@ import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity {
     TextView fName,lName, email, address, postcode, phoneNumber, verifyMsg;
-    FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
     String userId;
     Button returnBtn, resendCode, resetPasswordProfile, editProfileImg;
     ImageView profileImage;
     StorageReference storageReference;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
 
     //TODO: Handle DB on the spot
     //Hello

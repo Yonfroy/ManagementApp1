@@ -7,27 +7,61 @@
     android:background="#f5f5f7"
     tools:context=".LandingActivity">
 
+
     <Button
-        android:id="@+id/logOutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:onClick="logout"
-        android:text="@string/logOut"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/profileBtn"
+        android:layout_width="105dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="16dp"
+        android:drawableTop="@android:drawable/ic_menu_info_details"
+        android:onClick="profile2"
+        android:padding="16dp"
+        android:text="@string/profile"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/settingsBtn"
+        app:layout_constraintStart_toEndOf="@+id/appointmentBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/appointmentBtn"
+        android:layout_width="105dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:drawableTop="@android:drawable/ic_menu_my_calendar"
+        android:padding="16dp"
+        android:text="Schedule"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/profileBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/profile"
-        android:onClick="profile2"
-        app:layout_constraintBottom_toTopOf="@+id/logOutButton"
-        app:layout_constraintEnd_toEndOf="@+id/logOutButton"
-        app:layout_constraintStart_toStartOf="@+id/logOutButton"
+        android:id="@+id/settingsBtn"
+        android:layout_width="105dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:drawableTop="@android:drawable/ic_menu_edit"
+        android:padding="16dp"
+        android:text="Settings"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/appointmentList"
+        android:layout_width="401dp"
+        android:layout_height="542dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
