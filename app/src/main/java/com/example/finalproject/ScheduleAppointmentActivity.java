@@ -11,6 +11,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -41,6 +42,7 @@ public class ScheduleAppointmentActivity extends AppCompatActivity implements Ad
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userId;
+    Button confirmAppBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class ScheduleAppointmentActivity extends AppCompatActivity implements Ad
         setContentView(R.layout.activity_schedule_appointment);
 
         address = findViewById(R.id.address);
+        confirmAppBtn = findViewById(R.id.confirmAppBtn);
         date_time_in = findViewById(R.id.date_time_in);
         date_time_in.setInputType(InputType.TYPE_NULL);
         fAuth = FirebaseAuth.getInstance();
@@ -66,6 +69,14 @@ public class ScheduleAppointmentActivity extends AppCompatActivity implements Ad
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 address.setText(documentSnapshot.getString("address"));
+            }
+        });
+
+        confirmAppBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Add app to database
+                setAppointment();
             }
         });
 
@@ -103,6 +114,10 @@ public class ScheduleAppointmentActivity extends AppCompatActivity implements Ad
         };
 
         new DatePickerDialog(ScheduleAppointmentActivity.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+
+    }
+
+    private void setAppointment(){
 
     }
 
