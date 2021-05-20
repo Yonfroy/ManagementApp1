@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
@@ -18,61 +19,105 @@ import java.util.Calendar;
 
 public class ScheduleAppointmentActivity extends AppCompatActivity {
 
-    EditText dateInput, timeInput, dateTimeInput;
+    EditText date_in;
+    EditText time_in;
+    EditText date_time_in;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_appointment);
 
-        dateInput = findViewById(R.id.dateInput);
-        timeInput = findViewById(R.id.timeInput);
-        dateTimeInput = findViewById(R.id.dateTimeInput);
-        
-        dateInput.setOnClickListener(new View.OnClickListener() {
+        date_in=findViewById(R.id.date_in);
+        time_in=findViewById(R.id.time_in);
+        date_time_in=findViewById(R.id.date_time_in);
+
+        date_time_in.setInputType(InputType.TYPE_NULL);
+        date_in.setInputType(InputType.TYPE_NULL);
+        time_in.setInputType(InputType.TYPE_NULL);
+
+        date_in.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                showDateDialog(dateInput);
+            public void onClick(View v) {
+                showDateDialog(date_in);
             }
         });
-        
-        timeInput.setOnClickListener(new View.OnClickListener() {
+
+        time_in.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                showTimeDialog(timeInput);
+            public void onClick(View v) {
+                showTimeDialog(time_in);
             }
+        });
 
-            private void showTimeDialog(EditText timeInput) {
-                Calendar calendar = Calendar.getInstance();
+        date_time_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateTimeDialog(date_time_in);
+            }
+        });
+    }
 
-                TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+    private void showDateTimeDialog(final EditText date_time_in) {
+        final Calendar calendar=Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR,year);
+                calendar.set(Calendar.MONTH,month);
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+
+                TimePickerDialog.OnTimeSetListener timeSetListener=new TimePickerDialog.OnTimeSetListener() {
                     @Override
-                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                        calendar.set(Calendar.MINUTE, minute);
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-                        timeInput.setText(simpleDateFormat.format(calendar));
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                        calendar.set(Calendar.MINUTE,minute);
+
+                        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yy-MM-dd HH:mm");
+
+                        date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
                     }
                 };
 
-                new TimePickerDialog(ScheduleAppointmentActivity.this, timeSetListener, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
-            }
-        });
-    }
-
-    private void showDateDialog(EditText dateInput) {
-        Calendar calendar = Calendar.getInstance();
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yy");
-                dateInput.setText(simpleDateFormat.format(calendar));
+                new TimePickerDialog(ScheduleAppointmentActivity.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false).show();
             }
         };
 
-        new DatePickerDialog(ScheduleAppointmentActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), Calendar.DAY_OF_MONTH);
+        new DatePickerDialog(ScheduleAppointmentActivity.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+
     }
+
+    private void showTimeDialog(final EditText time_in) {
+        final Calendar calendar=Calendar.getInstance();
+
+        TimePickerDialog.OnTimeSetListener timeSetListener=new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                calendar.set(Calendar.MINUTE,minute);
+                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
+                time_in.setText(simpleDateFormat.format(calendar.getTime()));
+            }
+        };
+
+        new TimePickerDialog(ScheduleAppointmentActivity.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false).show();
+    }
+
+    private void showDateDialog(final EditText date_in) {
+        final Calendar calendar=Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR,year);
+                calendar.set(Calendar.MONTH,month);
+                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yy-MM-dd");
+                date_in.setText(simpleDateFormat.format(calendar.getTime()));
+
+            }
+        };
+
+        new DatePickerDialog(ScheduleAppointmentActivity.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
 }

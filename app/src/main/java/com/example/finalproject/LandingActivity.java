@@ -33,11 +33,9 @@ public class LandingActivity extends AppCompatActivity {
 
     public static final String TAG = "TAG";
     String userID;
-    Button logOutBtn;
     FirebaseAuth fAuth;
     StorageReference storageReference;
     FirebaseFirestore fStore;
-    Button testBtn;
     ListView appList;
 
     String[] addresses = {
@@ -135,5 +133,9 @@ public class LandingActivity extends AppCompatActivity {
     public void profile2(View view){
         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
         finish();
+    }
+
+    public void scheduleAppointment (View view){
+        startActivity(new Intent(getApplicationContext(), ScheduleAppointmentActivity.class));
     }
 }

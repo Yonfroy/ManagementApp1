@@ -29,6 +29,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
+        android:onClick="scheduleAppointment"
         android:drawableTop="@android:drawable/ic_menu_my_calendar"
         android:padding="16dp"
         android:text="Schedule"

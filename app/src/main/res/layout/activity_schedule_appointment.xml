@@ -12,21 +12,21 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/dateInput"
+            android:id="@+id/date_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Select date"
             android:inputType="none"/>
 
         <EditText
-            android:id="@+id/timeInput"
+            android:id="@+id/time_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Select date"
             android:inputType="none"/>
 
         <EditText
-            android:id="@+id/dateTimeInput"
+            android:id="@+id/date_time_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Select date and time"
