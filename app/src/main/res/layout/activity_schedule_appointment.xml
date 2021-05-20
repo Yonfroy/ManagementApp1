@@ -12,25 +12,30 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/date_in"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Select date"
-            android:inputType="none"/>
-
-        <EditText
-            android:id="@+id/time_in"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Select date"
-            android:inputType="none"/>
-
-        <EditText
             android:id="@+id/date_time_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Select date and time"
-            android:inputType="none"/>
+            android:inputType="none" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your address"
+             />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirm Appointment"/>
     </LinearLayout>
 
 

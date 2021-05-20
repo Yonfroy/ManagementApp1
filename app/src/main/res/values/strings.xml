@@ -55,5 +55,14 @@
     <string name="editConfirm">Confirm</string>
     <string name="editReturn">Return</string>
 
+    <string-array name="hours">
+        <item>1 Hr</item>
+        <item>2 Hr</item>
+        <item>3 Hr</item>
+        <item>4 Hr</item>
+        <item>5 Hr</item>
+    </string-array>
+
+
 
 </resources>

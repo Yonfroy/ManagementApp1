@@ -43,7 +43,6 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
 
     //TODO: Handle DB on the spot
-    //Hello
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
