@@ -18,6 +18,11 @@
             android:hint="Select date and time"
             android:inputType="none" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select appointment length" />
+
         <Spinner
             android:id="@+id/spinner1"
             android:layout_width="match_parent"

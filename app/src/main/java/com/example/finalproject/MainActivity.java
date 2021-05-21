@@ -128,9 +128,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    public void goToRegister(View v){
-        startActivity(new Intent(getApplicationContext(), Register.class));
-        finish();
-    }
 }

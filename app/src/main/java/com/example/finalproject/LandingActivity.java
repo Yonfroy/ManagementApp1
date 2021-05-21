@@ -26,7 +26,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LandingActivity extends AppCompatActivity {
@@ -38,29 +40,53 @@ public class LandingActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     ListView appList;
 
-    String[] addresses = {
-      "63 Northcote Road", "19 Wessex Gate", "Trump tower 102",
-    };
-
-    String[] dates = {
-            "05/04/1999 12:00:00", "17/02/2021 16:30:00", "01/11/2021 06:00:00",
-    };
-
-    String[] durations = {
-            "2H", "6H", "1H",
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
-        //testBtn = findViewById(R.id.testBtn);
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
+        userID = fAuth.getCurrentUser().getUid();
 
-        //LIST TEST BELOW
+        List<String> addresses = new ArrayList<String>();
+        List<String> dates = new ArrayList<String>();
+        List<String> durations = new ArrayList<String>();
+
         AppointmentListAdapter adapter = new AppointmentListAdapter(this, addresses, dates, durations);
         appList=(ListView)findViewById(R.id.appointmentList);
         appList.setAdapter(adapter);
+
+        fStore.collection("appointments").whereEqualTo("customer", userID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot document : task.getResult()){
+                        System.out.println(document.getId() + " => " + document.getData());
+                        //Get address, dates and duration from document
+                        Map<String, Object> data = document.getData();
+
+                        Timestamp datetime = (Timestamp) data.get("date");
+                        long duration = (Long) data.get("length");
+                        String durationText = String.valueOf(duration);
+                        if(duration > 1) {
+                            durationText += " Hours";
+                        } else {
+                            durationText += " Hour";
+                        }
+
+                        addresses.add(data.get("address").toString());
+                        dates.add(datetime.toDate().toLocaleString());
+                        durations.add(durationText);
+
+                        adapter.notifyDataSetChanged();
+                    }
+                } else {
+                    Log.d(TAG, "Error retrieving documents: ", task.getException());
+                }
+            }
+        });
 
         appList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -68,60 +94,6 @@ public class LandingActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Item " + position + " clicked", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-        int time = (int) (System.currentTimeMillis());
-
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference();
-
-        userID = fAuth.getCurrentUser().getUid();
-//        DocumentReference documentReference = fStore.collection("appointments").document();
-//
-//        Map<String,Object> user = new HashMap<>();
-//        user.put("address", "BH8 8PD");
-//        user.put("customer", userID);
-//        user.put("date", Timestamp.now());
-//        user.put("employee", "");
-//        user.put("length", 1);
-//        user.put("status", "Pending");
-//
-//
-//        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-//            private static final String TAG = "TAG";
-//
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//                Log.d(TAG, "onSuccess: user profile created for " + userID);
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            private static final String TAG = "TAG";
-//
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Log.d(TAG, "onFailure: " + e.toString());
-//            }
-//        });
-
-//        testBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//               fStore.collection("appointments").whereEqualTo("customer", userID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                   @Override
-//                   public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                       if(task.isSuccessful()){
-//                           for(QueryDocumentSnapshot document : task.getResult()){
-//                               System.out.println(document.getId() + " => " + document.getData());
-//                           }
-//                       } else {
-//                           Log.d(TAG, "Error retrieving documents: ", task.getException());
-//                       }
-//                   }
-//               });
-//            }
-//        });
     }
 
     public void logout(View view){
