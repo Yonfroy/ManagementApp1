@@ -7,14 +7,17 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AppointmentListAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
-    private final String[] addresses;
-    private final String[] dates;
-    private final String[] durations;
+    private final List<String> addresses;
+    private final List<String> dates;
+    private final List<String> durations;
 
-    public AppointmentListAdapter(Activity context, String[] addresses, String[] dates, String[] durations) {
+    public AppointmentListAdapter(Activity context, List<String> addresses, List<String> dates, List<String> durations) {
         super(context, R.layout.appointment_list_item, addresses);
 
         this.context = context;
@@ -31,9 +34,9 @@ public class AppointmentListAdapter extends ArrayAdapter<String> {
         TextView dateText = (TextView) rowView.findViewById(R.id.app_date);
         TextView durationText = (TextView) rowView.findViewById(R.id.app_duration);
 
-        addressText.setText(addresses[position]);
-        dateText.setText(dates[position]);
-        durationText.setText(durations[position]);
+        addressText.setText(addresses.get(position));
+        dateText.setText(dates.get(position));
+        durationText.setText(durations.get(position));
 
         return rowView;
     }
