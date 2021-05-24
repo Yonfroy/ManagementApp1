@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -93,6 +94,7 @@ public class ScheduleAppointmentActivity extends AppCompatActivity implements Ad
                 if(validateData()){
                     setAppointment();
                     Toast.makeText(ScheduleAppointmentActivity.this, "Appointment booked.", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext(), LandingActivity.class));
                 }
             }
         });

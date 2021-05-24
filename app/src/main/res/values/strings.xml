@@ -55,6 +55,16 @@
     <string name="editConfirm">Confirm</string>
     <string name="editReturn">Return</string>
 
+    <!--Appointment Info Strings-->
+    <string name="appInfo">Appointment Info</string>
+    <string name="customerName">Customer:</string>
+    <string name="employeeName">Employee:</string>
+    <string name="address">Address:</string>
+    <string name="date">Date:</string>
+    <string name="length">Length:</string>
+    <string name="Status">Status:</string>
+    <string name="Cancel">Cancel Appointment</string>
+
     <integer-array name="hours">
         <item>1</item>
         <item>2</item>
