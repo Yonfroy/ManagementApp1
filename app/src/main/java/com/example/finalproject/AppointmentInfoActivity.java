@@ -32,6 +32,11 @@ public class AppointmentInfoActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
+    //TODO: Check for user type
+    //TODO: Rename cancel app button to something else as it will be for assigning emp too
+    String userType = "manager";
+    //String userType = "customer";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +76,6 @@ public class AppointmentInfoActivity extends AppCompatActivity {
                 if(employeeID.isEmpty()){
                     appEmp.setText("Not yet assigned");
                 } else {
-                    //TODO: Load employee full name using employee ID
                     loadEmployeeData(employeeID);
                 }
                 appAddress.setText(documentSnapshot.getString("address"));
@@ -81,22 +85,32 @@ public class AppointmentInfoActivity extends AppCompatActivity {
             }
         });
 
+        //Changing btn text based on user type
+        if(userType.equals("manager")) {
+            cancelApp.setText("Assign Employee");
+        } else if(userType.equals("customer")) {
+            cancelApp.setText("Cancel Appointment");
+        }
+
         cancelApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), LandingActivity.class));
-                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(getApplicationContext(), "Your appointment has been cancelled.", Toast.LENGTH_LONG).show();
-//                        startActivity(new Intent(getApplicationContext(), LandingActivity.class));
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull @org.jetbrains.annotations.NotNull Exception e) {
-                        Toast.makeText(getApplicationContext(), "Your appointment cannot be cancelled, submit a bug report.", Toast.LENGTH_LONG).show();
-                    }
-                });
+                if(userType.equals("manager")) {
+                    //TODO: Assign employees here (aka show pop up for selecting emps or something)
+                } else if(userType.equals("customer")) {
+                    startActivity(new Intent(getApplicationContext(), LandingActivity.class));
+                    documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(getApplicationContext(), "Your appointment has been cancelled.", Toast.LENGTH_LONG).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull @org.jetbrains.annotations.NotNull Exception e) {
+                            Toast.makeText(getApplicationContext(), "Your appointment cannot be cancelled, submit a bug report.", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         });
     }
