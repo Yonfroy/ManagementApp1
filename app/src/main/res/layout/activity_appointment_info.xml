@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppointmentInfoActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/appInfo"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/cusNameAppInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/customerName"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/empNameAppInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/employeeName"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/cusNameAppInfo"
+        app:layout_constraintTop_toBottomOf="@+id/cusNameAppInfo" />
+
+    <TextView
+        android:id="@+id/addressAppInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/address"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/empNameAppInfo"
+        app:layout_constraintTop_toBottomOf="@+id/empNameAppInfo" />
+
+    <TextView
+        android:id="@+id/dateAppInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/date"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/addressAppInfo"
+        app:layout_constraintTop_toBottomOf="@+id/addressAppInfo" />
+
+    <TextView
+        android:id="@+id/lengthAppInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/length"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/dateAppInfo"
+        app:layout_constraintTop_toBottomOf="@+id/dateAppInfo" />
+
+    <TextView
+        android:id="@+id/statusAppInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/Status"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/lengthAppInfo"
+        app:layout_constraintTop_toBottomOf="@+id/lengthAppInfo" />
+
+    <Button
+        android:id="@+id/cancelAppointmentBtn"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/appCusfName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/cusNameAppInfo"
+        app:layout_constraintTop_toTopOf="@+id/cusNameAppInfo" />
+
+    <TextView
+        android:id="@+id/appEmp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/appCusfName"
+        app:layout_constraintTop_toBottomOf="@+id/appCusfName" />
+
+    <TextView
+        android:id="@+id/appAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/appEmp"
+        app:layout_constraintTop_toBottomOf="@+id/appEmp" />
+
+    <TextView
+        android:id="@+id/appDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/appAddress"
+        app:layout_constraintTop_toBottomOf="@+id/appAddress" />
+
+    <TextView
+        android:id="@+id/appLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/appDate"
+        app:layout_constraintTop_toBottomOf="@+id/appDate" />
+
+    <TextView
+        android:id="@+id/appStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/appLength"
+        app:layout_constraintTop_toBottomOf="@+id/appLength" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

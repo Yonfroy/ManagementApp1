@@ -53,8 +53,9 @@ public class LandingActivity extends AppCompatActivity {
         List<String> addresses = new ArrayList<String>();
         List<String> dates = new ArrayList<String>();
         List<String> durations = new ArrayList<String>();
+        List<String> appointmentID = new ArrayList<String>();
 
-        AppointmentListAdapter adapter = new AppointmentListAdapter(this, addresses, dates, durations);
+        AppointmentListAdapter adapter = new AppointmentListAdapter(this, addresses, dates, durations, appointmentID);
         appList=(ListView)findViewById(R.id.appointmentList);
         appList.setAdapter(adapter);
 
@@ -63,7 +64,6 @@ public class LandingActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(QueryDocumentSnapshot document : task.getResult()){
-                        System.out.println(document.getId() + " => " + document.getData());
                         //Get address, dates and duration from document
                         Map<String, Object> data = document.getData();
 
@@ -79,6 +79,7 @@ public class LandingActivity extends AppCompatActivity {
                         addresses.add(data.get("address").toString());
                         dates.add(datetime.toDate().toLocaleString());
                         durations.add(durationText);
+                        appointmentID.add(document.getId());
 
                         adapter.notifyDataSetChanged();
                     }
