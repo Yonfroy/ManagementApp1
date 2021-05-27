@@ -25,17 +25,17 @@ import com.google.firebase.storage.StorageReference;
 
 public class AppointmentInfoActivity extends AppCompatActivity {
 
-    String appointmentID, employeeID;
+    String appointmentID;
     TextView appCusName, appEmp, appAddress, appDate, appLength, appStatus;
-    Button cancelApp, assignEmp;
+    Button actionBtn;
     StorageReference storageReference;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
+    String userType;
 
     //TODO: Check for user type
     //TODO: Rename cancel app button to something else as it will be for assigning emp too
-    String userType = "manager";
-    //String userType = "customer";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +49,10 @@ public class AppointmentInfoActivity extends AppCompatActivity {
         appLength = findViewById(R.id.appLength);
         appStatus = findViewById(R.id.appStatus);
 
-        cancelApp = findViewById(R.id.cancelAppointmentBtn);
+        actionBtn = findViewById(R.id.actionBtn);
 
         appointmentID = getIntent().getStringExtra("appointmentID");
+        userType = getIntent().getStringExtra("userType");
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -85,18 +86,23 @@ public class AppointmentInfoActivity extends AppCompatActivity {
             }
         });
 
+        System.out.println(userType);
         //Changing btn text based on user type
         if(userType.equals("manager")) {
-            cancelApp.setText("Assign Employee");
+            actionBtn.setText("Assign Employee");
         } else if(userType.equals("customer")) {
-            cancelApp.setText("Cancel Appointment");
+            actionBtn.setText("Cancel Appointment");
+        } else if(userType.equals("employee")){
+            actionBtn.setVisibility(View.GONE);
         }
 
-        cancelApp.setOnClickListener(new View.OnClickListener() {
+        actionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(userType.equals("manager")) {
-                    //TODO: Assign employees here (aka show pop up for selecting emps or something)
+                    Intent intent = new Intent(getApplicationContext(), EmployeeSelectionActivity.class);
+                    intent.putExtra("appointmentID", appointmentID);
+                    startActivity(intent);
                 } else if(userType.equals("customer")) {
                     startActivity(new Intent(getApplicationContext(), LandingActivity.class));
                     documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
