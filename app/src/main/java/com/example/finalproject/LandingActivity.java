@@ -21,6 +21,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -50,16 +51,27 @@ public class LandingActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         userID = fAuth.getCurrentUser().getUid();
 
+        String userType = getIntent().getStringExtra("userType");
+
         List<String> addresses = new ArrayList<String>();
         List<String> dates = new ArrayList<String>();
         List<String> durations = new ArrayList<String>();
         List<String> appointmentID = new ArrayList<String>();
 
-        AppointmentListAdapter adapter = new AppointmentListAdapter(this, addresses, dates, durations, appointmentID);
+        AppointmentListAdapter adapter = new AppointmentListAdapter(this, addresses, dates, durations, appointmentID, userType);
         appList=(ListView)findViewById(R.id.appointmentList);
         appList.setAdapter(adapter);
 
-        fStore.collection("appointments").whereEqualTo("customer", userID).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        Query appointmentQuery = null;
+
+        if(userType.equals("customer")){
+            appointmentQuery = fStore.collection("appointments").whereEqualTo("appointments", userID);
+        } else if(userType.equals("manager")){
+            appointmentQuery = fStore.collection("appointments").orderBy("date");
+        } else if(userType.equals("employee")){
+            appointmentQuery = fStore.collection("appointments").whereEqualTo("employee", userID);
+        }
+        appointmentQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
@@ -88,19 +100,6 @@ public class LandingActivity extends AppCompatActivity {
                 }
             }
         });
-
-        appList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "Item " + position + " clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void logout(View view){
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        finish();
     }
 
     public void profile2(View view){
