@@ -20,6 +20,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     EditText mEmail, mPassword;
     TextView mForgotPW;
     FirebaseAuth fAuth;
-
+    FirebaseFirestore fStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
         mRegisterBtn = findViewById(R.id.loginRegister);
 
         fAuth = FirebaseAuth.getInstance();
-
-
+        fStore = FirebaseFirestore.getInstance();
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +79,25 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(MainActivity.this, "User logged in.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), LandingActivity.class));
+                            String userID = fAuth.getUid();
+                            DocumentReference documentReference = fStore.collection("users").document(userID);
+                            documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                                    if(task.isSuccessful()){
+                                        DocumentSnapshot documentSnapshot = task.getResult();
+                                        String userType = documentSnapshot.getString("userType");
+
+                                        Toast.makeText(MainActivity.this, "User logged in.", Toast.LENGTH_SHORT).show();
+
+                                        Intent intent = new Intent(getApplicationContext(), LandingActivity.class);
+                                        intent.putExtra("userType", userType);
+                                        startActivity(intent);
+                                    } else{
+                                        System.out.println(task.getException().toString());
+                                    }
+                                }
+                            });
                         } else {
                             Toast.makeText(MainActivity.this, "Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -121,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Close dialog
+                        dialog.dismiss();
                     }
                 });
 

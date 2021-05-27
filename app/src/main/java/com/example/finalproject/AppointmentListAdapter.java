@@ -18,8 +18,9 @@ public class AppointmentListAdapter extends ArrayAdapter<String> {
     private final List<String> dates;
     private final List<String> durations;
     private final List<String> appointmentID;
+    private String userType;
 
-    public AppointmentListAdapter(Activity context, List<String> addresses, List<String> dates, List<String> durations, List<String> appointmentID) {
+    public AppointmentListAdapter(Activity context, List<String> addresses, List<String> dates, List<String> durations, List<String> appointmentID, String userType) {
         super(context, R.layout.appointment_list_item, addresses);
 
         this.context = context;
@@ -27,6 +28,7 @@ public class AppointmentListAdapter extends ArrayAdapter<String> {
         this.dates = dates;
         this.durations = durations;
         this.appointmentID = appointmentID;
+        this.userType = userType;
     }
 
     public View getView(int position, View view, ViewGroup parent) {
@@ -37,6 +39,7 @@ public class AppointmentListAdapter extends ArrayAdapter<String> {
             public void onClick(View view) {
                 Intent intent = new Intent(context.getApplicationContext(), AppointmentInfoActivity.class);
                 intent.putExtra("appointmentID", appointmentID.get(position));
+                intent.putExtra("userType", userType);
                 context.startActivity(intent);
             }
         });
