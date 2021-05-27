@@ -63,12 +63,15 @@ public class LandingActivity extends AppCompatActivity {
         appList.setAdapter(adapter);
 
         Query appointmentQuery = null;
-
+        System.out.println(userType);
         if(userType.equals("customer")){
-            appointmentQuery = fStore.collection("appointments").whereEqualTo("appointments", userID);
+            System.out.println(userType);
+            appointmentQuery = fStore.collection("appointments").whereEqualTo("customer", userID);
         } else if(userType.equals("manager")){
+            System.out.println(userType);
             appointmentQuery = fStore.collection("appointments").orderBy("date");
         } else if(userType.equals("employee")){
+            System.out.println(userType);
             appointmentQuery = fStore.collection("appointments").whereEqualTo("employee", userID);
         }
         appointmentQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -107,6 +110,9 @@ public class LandingActivity extends AppCompatActivity {
         finish();
     }
 
+    public void settings(View view){
+        Toast.makeText(this, "Under construction!", Toast.LENGTH_LONG).show();
+    }
     public void scheduleAppointment (View view){
         startActivity(new Intent(getApplicationContext(), ScheduleAppointmentActivity.class));
     }

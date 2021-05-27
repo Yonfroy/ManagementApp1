@@ -46,6 +46,7 @@
         android:layout_marginRight="32dp"
         android:drawableTop="@android:drawable/ic_menu_edit"
         android:padding="16dp"
+        android:onClick="settings"
         android:text="Settings"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"

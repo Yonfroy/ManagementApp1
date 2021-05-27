@@ -124,7 +124,8 @@ public class EditProfileActivity extends AppCompatActivity {
                         updatedVars.put("phone", phoneNum);
                         updatedVars.put("email", email);
                         docRef.update(updatedVars);
-                        Toast.makeText(EditProfileActivity.this, "Details.", Toast.LENGTH_SHORT);
+                        Toast.makeText(EditProfileActivity.this, "Your details have been updated..", Toast.LENGTH_SHORT);
+                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
