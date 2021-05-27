@@ -23,6 +23,7 @@ public class EmployeeSelectionActivity extends AppCompatActivity {
 
     ListView empList;
     FirebaseFirestore fStore;
+    String appointmentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class EmployeeSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_employee_selection);
 
         fStore = FirebaseFirestore.getInstance();
-        String appointmentID = getIntent().getStringExtra("appointmentID");
+        appointmentID = getIntent().getStringExtra("appointmentID");
 
         List<String> names = new ArrayList<String>();
         List<String> emails = new ArrayList<String>();
