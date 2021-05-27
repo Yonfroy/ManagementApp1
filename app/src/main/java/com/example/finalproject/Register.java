@@ -161,6 +161,7 @@ public class Register extends AppCompatActivity {
                             user.put("phone", phone);
                             user.put("email", email);
                             user.put("password", password);
+                            user.put("userType", "customer");
 
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 private static final String TAG = "TAG";
